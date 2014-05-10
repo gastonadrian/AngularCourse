@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso AngularJs</title>
+    <link rel="stylesheet" href="../../Css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <h1>Curso AngularJs</h1>
+                        <p class="lead">Reddit Tv</p>
+                </div>
+            </div>
+        </header>
+        <div class="app-container row" ng-app ng-controller="IndexCtrl">            
+            <ul class="unstyled">
+                <li ng-repeat="frase in frases">
+                    <span>{{frase}}</span><button>Me gusta</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--lib-->
+    <script type="text/javascript" src="../../Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/lib/angular.min.js"></script>
+    <script type="text/javascript">
+        function IndexCtrl($scope){
+            $scope.frases = [
+                "I would love to change the world, but they won't give me the source code",
+                "If at first you don't succeed; call it version 1.0",
+                "Microsoft: \"You've got questions. We've got dancing paperclips.\"",
+                "I'm not anti-social; I'm just not user friendly",
+                "The glass is neither half-full nor half-empty: it's twice as big as it needs to be.",
+                "A Life? Cool! Where can I download one of those?",
+                "Artificial Intelligence is no match for Natural Stupidity.",
+                "Windows has detected you do not have a keyboard. Press 'F9' to continue."
+            ];
+        }
+    </script>
+</body>
+</html>

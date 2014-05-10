@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Test</title>
+	
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		(function(){
+			'use strict';
+			angular.module('redditTv',[])
+				.config(function ($routeProvider) {
+                    $routeProvider.when('/index', { 
+                    	template: '<div class="text-primary"><span>{{lugar}}</span></div>' , 
+                    	controller: 'indexCtrl' });
+                    $routeProvider.when('/another', { 
+                    	template: '<div class="text-success"><span>Segunda vista: {{lugar}}</span></div>' , 
+                    	controller: 'otroCtrl' });
+                    $routeProvider.otherwise({ redirectTo: '/index' });
+                })
+                .controller('indexCtrl', function($scope){
+                	$scope.lugar = 'Estas en el index';
+                })
+                .controller('otroCtrl', function($scope){
+                	$scope.lugar = 'Estas en otra vista';
+                });
+		}())
+	</script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h3 class="text-muted">Curso AngularJs</h3>
+		</div>
+		<div class="jumbotron" ng-app="redditTv">
+			<div ng-view></div>
+			<a href="#/index" class="btn btn-primary">Ir a Index</a>
+			<a href="#/another" class="btn btn-success">Ir a otra vista</a>
+			<a href="#/cualquier" class="btn btn-danger">Ir a una url desconocida</a>
+		</div>
+	</div>
+</body>
+</html>

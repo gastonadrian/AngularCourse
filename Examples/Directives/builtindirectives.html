@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso AngularJs</title>
+    <link rel="stylesheet" href="../../Css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <h1>Curso AngularJs</h1>
+                        <p class="lead">Reddit Tv</p>
+                </div>
+            </div>
+        </header>
+        <div class="app-container row" ng-app ng-controller="IndexCtrl">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ng class</h3>
+                </div>
+              <div class="panel-body">
+                    <input type="button" class="btn btn-primary" value="Primary" ng-click="tienePrimary = !tienePrimary" />{{tienePrimary && 'on' || 'off'}}
+                    <input type="button" class="btn btn-warning" value="Warning" ng-click="tieneWarning = !tieneWarning" />{{tieneWarning && 'on' || 'off'}}
+                    <input type="button" class="btn btn-danger" value="Danger" ng-click="tieneDanger = !tieneDanger" />{{tieneDanger && 'on' || 'off'}}
+                    <p ng-class="{ 'text-primary' : tienePrimary, 'text-warning': tieneWarning, 'text-danger': tieneDanger }">ng-class usando notacion de objetos</p>
+                    <p ng-class="classString">ng-class usando notacion de string</p>
+                    <p ng-class="classArray">ng-class usando notacion de array</p>    
+              </div>
+            </div>
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ng hide / show</h3>
+                </div>
+              <div class="panel-body">
+                    <input type="button" class="btn btn-primary" value="Primary" ng-click="mostrarTexto = !mostrarTexto" />{{mostrarTexto && 'mostrar' || 'ocultar'}}
+                    <p ng-show="mostrarTexto">ng-show='mostrarTexto'</p>
+                    <p ng-hide="mostrarTexto">ng-hide='mostrarTexto'</p>
+              </div>
+            </div>
+
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ng disabled</h3>
+                </div>
+              <div class="panel-body">
+                    <input type="button" class="btn btn-primary" value="Primary" ng-click="isEnabled = !isEnabled" />{{isEnabled && 'enabled' || 'disabled'}}
+                    <button class="btn btn-info" ng-disabled="isEnabled">ng-disabled="isEnabled"</button>
+                    <button class="btn btn-info" ng-disabled="!isEnabled">ng-disabled="!isEnabled"</button>
+              </div>
+            </div>
+            
+        </div>
+    </div>
+    <!--lib-->
+    <script type="text/javascript" src="../../Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/lib/angular.min.js"></script>
+    <script type="text/javascript">
+        function IndexCtrl($scope){
+            $scope.$watch('tienePrimary + tieneDanger + tieneWarning', function(){
+                $scope.classString = ($scope.tienePrimary && 'text-primary ') + ($scope.tieneWarning && ' text-warning ') + ($scope.tieneDanger && ' text-danger') ;
+                $scope.classArray = [($scope.tienePrimary && 'text-primary'), ($scope.tieneWarning && 'text-warning '), ($scope.tieneDanger && 'text-danger')] ;
+                console.log($scope.classString);
+            });
+        }
+    </script>
+</body>
+</html>

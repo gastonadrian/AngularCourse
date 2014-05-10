@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso AngularJs</title>
+    <link rel="stylesheet" href="../../Css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <h1>Curso AngularJs</h1>
+                        <p class="lead">Reddit Tv</p>
+                </div>
+            </div>
+        </header>
+        <div class="app-container row" ng-app="redditTv" ng-controller="IndexCtrl">
+            <div ejercicio-seis></div>
+        </div>
+    </div>
+    <!--lib-->
+   <script type="text/javascript" src="../../Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/lib/angular.min.js"></script>    
+    <!--app-->
+    <script type="text/javascript">
+        angular.module('directives',[])
+            .directive('ejercicioSeis', [
+                '$timeout',
+                function($timeout){
+                    var definition = {
+                        restrict:'A',
+                        replace:true,
+                        template:'<p>Es el sexto ejercicio</p>',
+                        link:function(scope, element, attrs){
+                            $timeout(function(){
+                                element.append(' <a href="http://google.com">Google</a>');
+                            }, 10 * 1000);
+                        }
+                    };
+                    return definition;
+                }
+            ]);
+
+        angular.module('controllers',[])
+            .controller('IndexCtrl',['$scope', function(scope){
+
+            }
+            ]);
+
+        angular.module('redditTv',['controllers','directives']);
+        
+    </script>
+</body>
+</html>

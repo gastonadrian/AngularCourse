@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso AngularJs</title>
+    <link rel="stylesheet" href="../../Css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <h1>Curso AngularJs</h1>
+                        <p class="lead">Reddit Tv</p>
+                </div>
+            </div>
+        </header>
+        <div class="app-container row" ng-app ng-controller="IndexCtrl">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-sm-2">Tasa(%):</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" ng-model="tasa">                            
+                    </div>
+                </div>
+            </form>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Precio + Tasa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{productos[0].Descripcion}}</td>
+                        <td>{{productos[0].Precio}}</td>
+                        <td>{{productos[0].Precio * (1 + tasa / 100) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{productos[1].Descripcion}}</td>
+                        <td>{{productos[1].Precio}}</td>
+                        <td>{{productos[1].Precio * (1 + tasa / 100) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--lib-->
+    <script type="text/javascript" src="../../Scripts/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/lib/angular.min.js"></script>
+    <script type="text/javascript">
+        function IndexCtrl($scope){
+            $scope.productos = [
+                {
+                    Descripcion : 'Remera',
+                    Precio: 50,
+                    PrecioConImpuesto: 0 
+                },
+                {
+                    Descripcion : 'Tablet',
+                    Precio: 2000,
+                    PrecioConImpuesto: 0   
+                }
+            ];
+
+            $scope.tasa = 20;
+        }
+    </script>
+</body>
+</html>
